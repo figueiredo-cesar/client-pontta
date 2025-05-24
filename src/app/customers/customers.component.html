@@ -1,0 +1,29 @@
+<div class="container">
+  <a [routerLink]="['clientes-save']">Criar</a>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nome</th>
+        <th scope="col">Email</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (item of customers; track item){
+      <tr>
+        <th scope="row">{{ item?.id }}</th>
+        <td>{{ item.name }}</td>
+        <td>{{ item.email }}</td>
+        <td>
+          <a [routerLink]="['/clientes/clientes-save/', item.id]">Editar</a>
+
+          <button class="btn m-2 btn-danger" (click)="deletar(item.id)">
+            Deletar
+          </button>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>

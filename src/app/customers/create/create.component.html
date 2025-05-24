@@ -1,0 +1,24 @@
+<div class="container">
+  <h3>Criar cliente</h3>
+  <form [formGroup]="this.form">
+    <div class="mb-3">
+      <label class="form-label">Nome</label>
+      <input formControlName="name" class="form-control" />
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Email</label>
+      <input type="email" formControlName="email" class="form-control" />
+      @if(this.form.get("email")?.getError("email")) {
+      <p class="text-danger mt-2">Email invalido</p>
+      }
+    </div>
+  </form>
+  <button
+    type="button"
+    class="btn btn-primary"
+    [disabled]="!this.form.valid"
+    (click)="save()"
+  >
+    Salvar
+  </button>
+</div>
